@@ -29,6 +29,7 @@ print(res.json())
 idbase=1
 
 while len(res.json()) > 2:
+<<<<<<< HEAD
 
         for i in range(50): # hourly unauthorized request limit is 60, trying 50 requests per ip
              try:
@@ -49,5 +50,3 @@ while len(res.json()) > 2:
             pindex = 0
             proxies = getproxies()
             # res = requests.get(urlbase + str(idbase), proxies=proxies[pindex])
-
-
