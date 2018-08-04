@@ -15,9 +15,8 @@ api.
 """
 
 # Dependency Injection
-import http
 import requests
-import urllib3
+import sqlite3
 from bs4 import BeautifulSoup
 
 # A method to fetch a list of proxies with ports from a public service
@@ -36,24 +35,37 @@ def getproxies():
         })
     return proxies
 
+# Connect to the database to store the results returned from the api
+conn = sqlite3.connect("githubusers.db", isolation_level=None, timeout=10)
+cur = conn.cursor()
+# cur.execute('CREATE TABLE users (username text, followers text, following text, repos text)')
+
+
 # Get the list of proxies
 proxies = getproxies()
 pindex = 0
 
 urlbase = 'https://api.github.com/users?since='
-idbase = 0
+idbase = 25072
 
 # Start crawling and print results
 res = requests.get(urlbase + str(idbase))
-print(res.json())
+for i in res.json():
+    sqlquery = "INSERT INTO users VALUES (\'%s\', \'%s\', \'%s\', \'%s\')" % (
+        i["login"], i["followers_url"], i["following_url"], i["repos_url"])
+    cur.execute(sqlquery)
+    print(i)
 
-idbase=1
+idbase=25105
 
 while len(res.json()) > 2:
 
         for i in range(50): # hourly unauthorized request limit is 60, trying 50 requests per ip
              try:
                 for i in res.json():
+                    sqlquery = "INSERT INTO users VALUES (\'%s\', \'%s\', \'%s\', \'%s\')" % (
+                    i["login"], i["followers_url"], i["following_url"], i["repos_url"])
+                    cur.execute(sqlquery)
                     print(i)
                 idbase = i["id"]
                 res = requests.get(urlbase + str(idbase), proxies=proxies[pindex])
