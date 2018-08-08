@@ -26,6 +26,7 @@ const About = { template: '<p>about page</p>' }
 const routes = {
   '/'      : Responses,
   '/first' : Responses,
+  '/dashboard/' : Responses,
   '/second': Responses,
   '/third' : Responses,
   '/about' : About
@@ -38,6 +39,7 @@ new Vue({
   },
   computed: {
       ViewComponent () {
+        console.log(this.currentRoute);
         return routes[this.currentRoute] || NotFound
       }
   },

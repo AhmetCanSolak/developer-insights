@@ -16,7 +16,7 @@ Rewrite.
 import json
 import pprint
 
-file = open("2015-01-01-15.json","r")
+file = open("2018-06-04-20.json","r")
 lines = file.readlines()
 #events =[ (json.loads(line)) for line in lines]
 print(lines[0])
