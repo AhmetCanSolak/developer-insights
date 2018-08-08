@@ -5,22 +5,48 @@
     <title>Developer Insights</title>
   </head>
   <body>
-
-    <header>
-      Developer Insights
+    <header class="container">
+      <br><br>
+      <div class="row">
+        <div class="column column-25"></div>
+        <div class="column column-50"><h1>Developer Insights</h1></div>
+        <div class="column column-25"></div>
+      </div>     
+      <hr>
     </header>
-    <div class="container" id="app"></div>
-    <footer>
-      ClubRockers: AhmetCan, Ali, Hazal
+
+    <div class="container" id="app">
+      <responses></responses>
+    </div>
+
+    <footer class="container">
+      <hr>
+      <div class="row">
+        <div class="column column-25"></div>
+        <div class="column column-50"><h3>ClubRockers: AhmetCan, Ali, Hazal</h3></div>
+        <div class="column column-25"></div>
+      </div> 
     </footer>
   
 
     <template id="responses-template">
-          <img src="http://www.cansolak.com/engr350-project/scrapper/graphs/bbusers_years.png" alt=""></img>
-          
+      <div>
+        <div class="row">
+          <img src="http://www.cansolak.com/engr350-project/api/graphs/bbusers_years.png" alt="">
+          <h1>Cool!</h1>          
+        </div><hr>
+        <div class="row">
+          <h1>Cool!</h1> 
+          <img src="http://www.cansolak.com/engr350-project/api/graphs/bbusers_years.png" alt="">
+                   
+        </div><hr>
+        <div class="row">
+          <img src="http://www.cansolak.com/engr350-project/api/graphs/bbusers_years.png" alt="">
+          <h1>Cool!</h1>          
+        </div><hr>
+      </div>
     </template>
 
-    <h1>Cool!</h1>
 
     <!-- Import Vue.js and my application -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.min.js"></script>
