@@ -1,5 +1,6 @@
 """
-
+A script to search Github usernames of people one by one, and get their location data from responding json and
+insert this info into the corresponding table (glocations) in the githubusers.db database
 """
 
 import requests
@@ -32,7 +33,7 @@ requestcounter = 0
 
 urlbase = 'https://api.github.com/users/'
 
-for username in usernames[3009::]:
+for username in usernames[3197::]:
     try:
         res = requests.get(urlbase + username[0], proxies=proxies[pindex])
         requestcounter += 1
