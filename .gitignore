@@ -1,3 +1,4 @@
 submissions/
 
 *.json
+*.DS_Store
