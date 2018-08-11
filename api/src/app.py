@@ -1,9 +1,8 @@
 
-from flask import render_template, jsonify
-import connexion
+from flask import Flask,render_template, jsonify
 from src import images
 
-app = connexion.App(__name__, specification_dir='./')
+app = Flask(__name__)
 
 
 @app.route('/')
@@ -21,7 +20,7 @@ def get(graph_name):
     return jsonify(images.get_one(graph_name))
 
 
-@app.route('/engr350-project/api/graphs', methods=['PUT'])
+@app.route('/engr350-project/api/graphs', methods=['POST'])
 def post(graph_name, graph_url):
     return images.create(graph_name, graph_url)
 
@@ -37,6 +36,6 @@ def put(graph_name, up_graph_name, graph_url):
 
 
 if __name__ == "__main__":
-    app.run(port=4555, debug=True)
+    app.run(port=4555, debug=False)
 
 
